@@ -1,0 +1,308 @@
+PS C:\Users\shrey\OneDrive\Documents\agentic-starter-kits\agentic-starter-kits\crewai-kit> uv run python main.py "retrieval-augmented generation"
+╭─────────────────────────────────────────────────────────────────────────── ✨ Update Available ✨ ───────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  A new version of CrewAI is available!                                                                                                                                       │
+│                                                                                                                                                                              │
+│  Current version: 1.15.27                                                                                                                                                    │
+│  Latest version:  1.15.28                                                                                                                                                    │
+│                                                                                                                                                                              │
+│  To update, run: uv sync --upgrade-package crewai                                                                                                                            │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────── 🚀 Crew Execution Started ──────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Crew Execution Started                                                                                                                                                      │
+│  Name: crew                                                                                                                                                                  │
+│  ID: a36aeefc-771d-4c04-8744-da3f6ccd1af5                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 📋 Task Started ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Started                                                                                                                                                                │
+│  Name: Research retrieval-augmented generation. List 5 key facts and 2 open questions.                                                                                       │
+│  ID: f5637c92-d005-470d-9417-7a389da9d3bd                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ──────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Research Analyst                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Task: Research retrieval-augmented generation. List 5 key facts and 2 open questions.                                                                                       │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────────────────────────────────────────────────── ✅ Agent Final Answer ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Research Analyst                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Final Answer:                                                                                                                                                               │
+│  **Retrieval‑Augmented Generation (RAG) – Research Brief**                                                                                                                   │
+│                                                                                                                                                                              │
+│  **Key Facts**                                                                                                                                                               │
+│                                                                                                                                                                              │
+│  - **Hybrid Architecture**: RAG combines a **dense or sparse retrieval module** (e.g., BM25, DPR, ColBERT) that fetches relevant text passages from an external knowledge    │
+│  base with a **generative language model** (e.g., T5, GPT‑3, LLaMA) that conditions its output on the retrieved documents. This decouples knowledge storage from language    │
+│  modeling, allowing the system to stay up‑to‑date without retraining the generator.                                                                                          │
+│                                                                                                                                                                              │
+│  - **Improved Factuality**: Empirical studies (e.g., Lewis et al., 2020; Izacard & Grave, 2022) show that RAG reduces hallucinations on open‑domain QA and                   │
+│  knowledge‑intensive tasks, achieving higher Exact Match and F1 scores than pure generation models of comparable size.                                                       │
+│                                                                                                                                                                              │
+│  - **Scalable Knowledge Updates**: Because the knowledge source is external, adding or correcting information only requires updating the **retrieval index** (e.g.,          │
+│  re‑indexing a corpus) rather than fine‑tuning the entire generator. This yields orders‑of‑magnitude lower compute cost for keeping the system current.                      │
+│                                                                                                                                                                              │
+│  - **End‑to‑End Training Variants**: Recent work demonstrates that jointly training the retriever and generator (e.g., RAG‑Seq, REALM, ORQA) can improve relevance of        │
+│  retrieved passages and overall task performance, but the joint objective introduces instability and higher memory demands.                                                  │
+│                                                                                                                                                                              │
+│  - **Latency Trade‑offs**: Real‑world deployments must balance retrieval latency (search over millions of documents) with generation speed. Techniques such as               │
+│  **approximate nearest‑neighbor (ANN) search**, **retrieval caching**, and **lightweight retrievers** (e.g., SPLADE, Contriever) are critical for keeping end‑to‑end         │
+│  response times under a few seconds.                                                                                                                                         │
+│                                                                                                                                                                              │
+│  **Open Questions**                                                                                                                                                          │
+│                                                                                                                                                                              │
+│  - **How to Guarantee Consistency Across Multiple Retrieved Passages?**                                                                                                      │
+│    When the generator conditions on several retrieved snippets that contain overlapping or contradictory information, it is unclear how best to enforce logical consistency  │
+│  in the final output. Approaches such as passage‑level attention weighting, post‑hoc verification, or explicit reasoning modules are promising but lack systematic           │
+│  evaluation.                                                                                                                                                                 │
+│                                                                                                                                                                              │
+│  - **What Are the Limits of Retrieval‑Augmentation for Complex Reasoning?**                                                                                                  │
+│    While RAG excels at factual recall, its ability to support multi‑step, chain‑of‑thought reasoning (e.g., mathematical proofs, policy analysis) remains uncertain.         │
+│  Determining whether richer retrieval signals (structured knowledge graphs, tool‑use APIs) or hybrid prompting strategies can bridge this gap is an active research          │
+│  frontier.                                                                                                                                                                   │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────────── 📋 Task Completion ─────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Completed                                                                                                                                                              │
+│  Name: Research retrieval-augmented generation. List 5 key facts and 2 open questions.                                                                                       │
+│  Agent: Research Analyst                                                                                                                                                     │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 📋 Task Started ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Started                                                                                                                                                                │
+│  Name: Using the research brief, write a 250-word explainer on retrieval-augmented generation.                                                                               │
+│  ID: 73555df0-2e7c-40c2-9dc8-0c8ca6b3ffc3                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ──────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Technical Writer                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Task: Using the research brief, write a 250-word explainer on retrieval-augmented generation.                                                                               │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────────────────────────────────────────────────── ✅ Agent Final Answer ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Technical Writer                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Final Answer:                                                                                                                                                               │
+│  Retrieval‑augmented generation (RAG) is a way to make AI text generators more reliable by giving them a built‑in search engine. Imagine a writer who can look up facts in   │
+│  a library while drafting a paragraph. The system has two parts: a retriever that quickly scans a large collection of documents and pulls out the most relevant snippets,    │
+│  and a generator that reads those snippets and writes the final answer. Because the knowledge lives outside the language model, the AI does not need to memorize everything  │
+│  during training; it can fetch up‑to‑date information whenever it is asked a question.                                                                                       │
+│                                                                                                                                                                              │
+│  The benefit is twofold. First, the output is more factual. Studies show that RAG models hallucinate far less than pure generators on open‑domain question answering.        │
+│  Second, updating the knowledge base is cheap – you simply add new articles to the index and re‑run the search, without retraining the whole model.                          │
+│                                                                                                                                                                              │
+│  Researchers have tried training the retriever and generator together, which can improve relevance but makes the training process harder and more memory‑intensive. In       │
+│  practice, engineers must also manage latency: searching millions of documents can be slow, so they use approximate nearest‑neighbor search, caching, or lightweight         │
+│  retrievers to keep response times under a few seconds.                                                                                                                      │
+│                                                                                                                                                                              │
+│  Open challenges remain. When several retrieved passages disagree, the generator may produce contradictory statements, and there is no consensus method for enforcing        │
+│  consistency. Likewise, RAG excels at recalling facts but still struggles with deep, multi‑step reasoning such as math proofs. Future work looks at new knowledge graphs     │
+│  and APIs to close that gap.                                                                                                                                                 │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────────── 📋 Task Completion ─────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Completed                                                                                                                                                              │
+│  Name: Using the research brief, write a 250-word explainer on retrieval-augmented generation.                                                                               │
+│  Agent: Technical Writer                                                                                                                                                     │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 📋 Task Started ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Started                                                                                                                                                                │
+│  Name: Edit the explainer. Tighten it and mark any claim needing a source.                                                                                                   │
+│  ID: ba10a093-1ba6-4992-915b-19c018356c61                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ──────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Editor                                                                                                                                                               │
+│                                                                                                                                                                              │
+│  Task: Edit the explainer. Tighten it and mark any claim needing a source.                                                                                                   │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────────────────────────────────────────────────── ✅ Agent Final Answer ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Editor                                                                                                                                                               │
+│                                                                                                                                                                              │
+│  Final Answer:                                                                                                                                                               │
+│  **Retrieval‑Augmented Generation (RAG) – Research Brief**                                                                                                                   │
+│                                                                                                                                                                              │
+│  **Key Facts**                                                                                                                                                               │
+│                                                                                                                                                                              │
+│  - **Hybrid architecture** – A retriever (dense or sparse, e.g., BM25, DPR, ColBERT) fetches relevant passages from an external knowledge base; a generative model (e.g.,    │
+│  T5, GPT‑3, LLaMA) conditions its output on those passages. This separates knowledge storage from language modeling, allowing updates without retraining the generator.      │
+│                                                                                                                                                                              │
+│  - **Improved factuality** – Empirical studies (e.g., Lewis et al., 2020; Izacard & Grave, 2022) report lower hallucination rates and higher Exact Match/F1 scores for RAG   │
+│  on open‑domain QA compared with pure generators of similar size. [source needed]                                                                                            │
+│                                                                                                                                                                              │
+│  - **Cheap knowledge updates** – Because the corpus is external, adding or correcting information only requires re‑indexing the retrieval database, which is far cheaper     │
+│  than fine‑tuning the generator. [source needed]                                                                                                                             │
+│                                                                                                                                                                              │
+│  - **End‑to‑end training** – Jointly optimizing retriever and generator (e.g., RAG‑Seq, REALM, ORQA) can boost passage relevance and overall performance, but it introduces  │
+│  training instability and higher memory consumption. [source needed]                                                                                                         │
+│                                                                                                                                                                              │
+│  - **Latency trade‑offs** – Searching millions of documents can dominate response time. Approximate nearest‑neighbor (ANN) search, retrieval caching, and lightweight        │
+│  retrievers (e.g., SPLADE, Contriever) are commonly used to keep end‑to‑end latency under a few seconds. [source needed]                                                     │
+│                                                                                                                                                                              │
+│  **Open Questions**                                                                                                                                                          │
+│                                                                                                                                                                              │
+│  - **Ensuring consistency across multiple passages** – When retrieved snippets contain overlapping or contradictory information, the generator may produce incoherent        │
+│  output. Potential solutions (passage‑level attention weighting, post‑hoc verification, explicit reasoning modules) lack systematic evaluation. [source needed]              │
+│                                                                                                                                                                              │
+│  - **Limits of retrieval‑augmentation for complex reasoning** – RAG excels at factual recall but its ability to support multi‑step, chain‑of‑thought reasoning (e.g.,        │
+│  mathematical proofs, policy analysis) is unclear. Whether richer signals (knowledge graphs, tool‑use APIs) or hybrid prompting can bridge this gap remains an active        │
+│  research frontier. [source needed]                                                                                                                                          │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  Retrieval‑augmented generation equips a language model with a built‑in search engine. The retriever quickly scans a large document collection and returns the most          │
+│  relevant snippets; the generator reads those snippets and produces the final answer. Because knowledge resides outside the model, the system can fetch up‑to‑date           │
+│  information at inference time instead of memorizing everything during training.                                                                                             │
+│                                                                                                                                                                              │
+│  The main advantages are (1) higher factual accuracy—RAG models hallucinate far less than pure generators on open‑domain QA—and (2) low‑cost knowledge updates—new articles  │
+│  are simply added to the index without retraining the generator. [source needed]                                                                                             │
+│                                                                                                                                                                              │
+│  Joint training of retriever and generator can improve relevance but makes training more memory‑intensive and unstable. In production, engineers must manage latency; ANN    │
+│  search, caching, and lightweight retrievers are essential to keep response times under a few seconds. [source needed]                                                       │
+│                                                                                                                                                                              │
+│  Open challenges persist. When several retrieved passages disagree, the generator may output contradictory statements, and no consensus method for enforcing consistency     │
+│  exists. Moreover, RAG still struggles with deep, multi‑step reasoning such as math proofs, prompting research into structured knowledge sources and tool‑use APIs. [source  │
+│  needed]                                                                                                                                                                     │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────────── 📋 Task Completion ─────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Completed                                                                                                                                                              │
+│  Name: Edit the explainer. Tighten it and mark any claim needing a source.                                                                                                   │
+│  Agent: Editor                                                                                                                                                               │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── Crew Completion ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Crew Execution Completed                                                                                                                                                    │
+│  Name: crew                                                                                                                                                                  │
+│  ID: a36aeefc-771d-4c04-8744-da3f6ccd1af5                                                                                                                                    │
+│  Final Output: **Retrieval‑Augmented Generation (RAG) – Research Brief**                                                                                                     │
+│                                                                                                                                                                              │
+│  **Key Facts**                                                                                                                                                               │
+│                                                                                                                                                                              │
+│  - **Hybrid architecture** – A retriever (dense or sparse, e.g., BM25, DPR, ColBERT) fetches relevant passages from an external knowledge base; a generative model (e.g.,    │
+│  T5, GPT‑3, LLaMA) conditions its output on those passages. This separates knowledge storage from language modeling, allowing updates without retraining the generator.      │
+│                                                                                                                                                                              │
+│  - **Improved factuality** – Empirical studies (e.g., Lewis et al., 2020; Izacard & Grave, 2022) report lower hallucination rates and higher Exact Match/F1 scores for RAG   │
+│  on open‑domain QA compared with pure generators of similar size. [source needed]                                                                                            │
+│                                                                                                                                                                              │
+│  - **Cheap knowledge updates** – Because the corpus is external, adding or correcting information only requires re‑indexing the retrieval database, which is far cheaper     │
+│  than fine‑tuning the generator. [source needed]                                                                                                                             │
+│                                                                                                                                                                              │
+│  - **End‑to‑end training** – Jointly optimizing retriever and generator (e.g., RAG‑Seq, REALM, ORQA) can boost passage relevance and overall performance, but it introduces  │
+│  training instability and higher memory consumption. [source needed]                                                                                                         │
+│                                                                                                                                                                              │
+│  - **Latency trade‑offs** – Searching millions of documents can dominate response time. Approximate nearest‑neighbor (ANN) search, retrieval caching, and lightweight        │
+│  retrievers (e.g., SPLADE, Contriever) are commonly used to keep end‑to‑end latency under a few seconds. [source needed]                                                     │
+│                                                                                                                                                                              │
+│  **Open Questions**                                                                                                                                                          │
+│                                                                                                                                                                              │
+│  - **Ensuring consistency across multiple passages** – When retrieved snippets contain overlapping or contradictory information, the generator may produce incoherent        │
+│  output. Potential solutions (passage‑level attention weighting, post‑hoc verification, explicit reasoning modules) lack systematic evaluation. [source needed]              │
+│                                                                                                                                                                              │
+│  - **Limits of retrieval‑augmentation for complex reasoning** – RAG excels at factual recall but its ability to support multi‑step, chain‑of‑thought reasoning (e.g.,        │
+│  mathematical proofs, policy analysis) is unclear. Whether richer signals (knowledge graphs, tool‑use APIs) or hybrid prompting can bridge this gap remains an active        │
+│  research frontier. [source needed]                                                                                                                                          │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  Retrieval‑augmented generation equips a language model with a built‑in search engine. The retriever quickly scans a large document collection and returns the most          │
+│  relevant snippets; the generator reads those snippets and produces the final answer. Because knowledge resides outside the model, the system can fetch up‑to‑date           │
+│  information at inference time instead of memorizing everything during training.                                                                                             │
+│                                                                                                                                                                              │
+│  The main advantages are (1) higher factual accuracy—RAG models hallucinate far less than pure generators on open‑domain QA—and (2) low‑cost knowledge updates—new articles  │
+│  are simply added to the index without retraining the generator. [source needed]                                                                                             │
+│                                                                                                                                                                              │
+│  Joint training of retriever and generator can improve relevance but makes training more memory‑intensive and unstable. In production, engineers must manage latency; ANN    │
+│  search, caching, and lightweight retrievers are essential to keep response times under a few seconds. [source needed]                                                       │
+│                                                                                                                                                                              │
+│  Open challenges persist. When several retrieved passages disagree, the generator may output contradictory statements, and no consensus method for enforcing consistency     │
+│  exists. Moreover, RAG still struggles with deep, multi‑step reasoning such as math proofs, prompting research into structured knowledge sources and tool‑use APIs. [source  │
+│  needed]                                                                                                                                                                     │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+=== FINAL OUTPUT (also saved to output/explainer.md) ===
+
+**Retrieval‑Augmented Generation (RAG) – Research Brief**
+
+**Key Facts**
+
+- **Hybrid architecture** – A retriever (dense or sparse, e.g., BM25, DPR, ColBERT) fetches relevant passages from an external knowledge base; a generative model (e.g., T5, GPT‑3, LLaMA) conditions its output on those passages. This separates knowledge storage from language modeling, allowing updates without retraining the generator.
+
+- **Improved factuality** – Empirical studies (e.g., Lewis et al., 2020; Izacard & Grave, 2022) report lower hallucination rates and higher Exact Match/F1 scores for RAG on open‑domain QA compared with pure generators of similar size. [source needed]
+
+- **Cheap knowledge updates** – Because the corpus is external, adding or correcting information only requires re‑indexing the retrieval database, which is far cheaper than fine‑tuning the generator. [source needed]
+
+- **End‑to‑end training** – Jointly optimizing retriever and generator (e.g., RAG‑Seq, REALM, ORQA) can boost passage relevance and overall performance, but it introduces training instability and higher memory consumption. [source needed]
+
+- **Latency trade‑offs** – Searching millions of documents can dominate response time. Approximate nearest‑neighbor (ANN) search, retrieval caching, and lightweight retrievers (e.g., SPLADE, Contriever) are commonly used to keep end‑to‑end latency under a few seconds. [source needed]
+
+**Open Questions**
+
+- **Ensuring consistency across multiple passages** – When retrieved snippets contain overlapping or contradictory information, the generator may produce incoherent output. Potential solutions (passage‑level attention weighting, post‑hoc verification, explicit reasoning modules) lack systematic evaluation. [source needed]
+
+- **Limits of retrieval‑augmentation for complex reasoning** – RAG excels at factual recall but its ability to support multi‑step, chain‑of‑thought reasoning (e.g., mathematical proofs, policy analysis) is unclear. Whether richer signals (knowledge graphs, tool‑use APIs) or hybrid prompting can bridge this gap remains an active research frontier. [source needed]
+
+---
+
+Retrieval‑augmented generation equips a language model with a built‑in search engine. The retriever quickly scans a large document collection and returns the most relevant snippets; the generator reads those snippets and produces the final answer. Because knowledge resides outside the model, the system can fetch up‑to‑date information at inference time instead of memorizing everything during training.
+
+The main advantages are (1) higher factual accuracy—RAG models hallucinate far less than pure generators on open‑domain QA—and (2) low‑cost knowledge updates—new articles are simply added to the index without retraining the generator. [source needed]
+
+Joint training of retriever and generator can improve relevance but makes training more memory‑intensive and unstable. In production, engineers must manage latency; ANN search, caching, and lightweight retrievers are essential to keep response times under a few seconds. [source needed]
+
+Open challenges persist. When several retrieved passages disagree, the generator may output contradictory statements, and no consensus method for enforcing consistency exists. Moreover, RAG still struggles with deep, multi‑step reasoning such as math proofs, prompting research into structured knowledge sources and tool‑use APIs. [source needed]
+╭─────────────────────────────────────────────────────────────────────────────── Tracing Status ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Info: Tracing is disabled.                                                                                                                                                  │
+│                                                                                                                                                                              │
+│  To enable tracing, do any one of these:                                                                                                                                     │
+│  • Set tracing=True in your Crew/Flow code                                                                                                                                   │
+│  • Set CREWAI_TRACING_ENABLED=true in your project's .env file                                                                                                               │
+│  • Run: crewai traces enable                                                                                                                                                 │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+PS C:\Users\shrey\OneDrive\Documents\agentic-starter-kits\agentic-starter-kits\crewai-kit> 

@@ -1,0 +1,473 @@
+PS C:\Users\shrey\OneDrive\Documents\agentic-starter-kits\agentic-starter-kits\crewai-kit> uv run python main.py "retrieval-augmented generation"
+╭─────────────────────────────────────────────────────────────────────────── ✨ Update Available ✨ ───────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  A new version of CrewAI is available!                                                                                                                                       │
+│                                                                                                                                                                              │
+│  Current version: 1.15.27                                                                                                                                                    │
+│  Latest version:  1.15.28                                                                                                                                                    │
+│                                                                                                                                                                              │
+│  To update, run: uv sync --upgrade-package crewai                                                                                                                            │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────── 🚀 Crew Execution Started ──────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Crew Execution Started                                                                                                                                                      │
+│  Name: crew                                                                                                                                                                  │
+│  ID: 2ff5a943-9871-4ef1-bc5c-276bc5c21848                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 📋 Task Started ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Started                                                                                                                                                                │
+│  Name: Research retrieval-augmented generation. List 5 key facts and 2 open questions.                                                                                       │
+│  ID: 255fb422-3a8d-45fa-8be2-f299971665bd                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ──────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Research Analyst                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Task: Research retrieval-augmented generation. List 5 key facts and 2 open questions.                                                                                       │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────────────────────────────────────────────────── ✅ Agent Final Answer ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Research Analyst                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Final Answer:                                                                                                                                                               │
+│  **Retrieval‑Augmented Generation (RAG): Key Facts & Open Questions**                                                                                                        │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 5 Key Facts                                                                                                                                                             │
+│                                                                                                                                                                              │
+│  - **Hybrid Architecture** – RAG combines a **retriever** (often a dense vector search over a large external knowledge base) with a **generator** (typically a large         │
+│  language model). The retriever supplies relevant documents or passages, and the generator conditions its output on that retrieved context.                                  │
+│                                                                                                                                                                              │
+│  - **Improved Factual Accuracy** – Empirical studies (e.g., Lewis et al., 2020; Izacard & Grave, 2022) show that grounding generation in retrieved evidence reduces          │
+│  hallucinations and yields higher scores on factual QA benchmarks (e.g., Natural Questions, TriviaQA).                                                                       │
+│                                                                                                                                                                              │
+│  - **Scalable Knowledge Updates** – Because the knowledge source is external, updating facts does **not** require re‑training the language model. Adding or editing          │
+│  documents in the index instantly changes the information the system can cite.                                                                                               │
+│                                                                                                                                                                              │
+│  - **Two Main Retrieval Paradigms** –                                                                                                                                        │
+│    1. **Sparse retrieval** (BM25, Elasticsearch) leverages term‑frequency statistics and works well for exact keyword matches.                                               │
+│    2. **Dense retrieval** (bi‑encoders like DPR, ColBERT, or newer contrastive models) encodes queries and passages into a shared vector space, enabling semantic matching   │
+│  beyond lexical overlap.                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  - **Prompt‑Engineering & Fusion Strategies** – The way retrieved texts are incorporated matters. Common techniques include:                                                 │
+│    - **Concatenation** of top‑k passages to the prompt.                                                                                                                      │
+│    - **Fusion‑in‑decoder** (e.g., Fusion-in-Decoder, FiD) where each passage is encoded separately and combined inside the decoder.                                          │
+│    - **Reranking** or **knowledge‑aware attention** to weight more relevant snippets during generation.                                                                      │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 2 Open Questions                                                                                                                                                        │
+│                                                                                                                                                                              │
+│  - **How to Optimize Retrieval‑Generation Interaction at Scale?**                                                                                                            │
+│    While dense retrievers provide semantic relevance, they can return noisy or overly long passages that overwhelm the generator’s context window. What principled methods   │
+│  (e.g., adaptive k‑selection, learned passage summarization, or dynamic context windows) can balance relevance, brevity, and computational cost for real‑time, large‑scale   │
+│  deployments?                                                                                                                                                                │
+│                                                                                                                                                                              │
+│  - **Evaluation of Trustworthiness Beyond Accuracy**                                                                                                                         │
+│    Current metrics focus on factual correctness (e.g., exact match, F1). However, users also care about **source attribution**, **bias mitigation**, and                     │
+│  **explainability**. How should we design evaluation frameworks that capture these dimensions—such as measuring citation fidelity, provenance tracking, or user‑perceived    │
+│  trust—in a way that guides the development of more responsible RAG systems?                                                                                                 │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────────── 📋 Task Completion ─────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Completed                                                                                                                                                              │
+│  Name: Research retrieval-augmented generation. List 5 key facts and 2 open questions.                                                                                       │
+│  Agent: Research Analyst                                                                                                                                                     │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 📋 Task Started ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Started                                                                                                                                                                │
+│  Name: Using the research brief, write a 250-word explainer on retrieval-augmented generation.                                                                               │
+│  ID: 690e605a-9b06-4fe6-9ed7-398623dc7be9                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ──────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Technical Writer                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Task: Using the research brief, write a 250-word explainer on retrieval-augmented generation.                                                                               │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────────────────────────────────────────────────── ✅ Agent Final Answer ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Technical Writer                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  Final Answer:                                                                                                                                                               │
+│  Retrieval‑augmented generation (RAG) is a way to make AI text generators more reliable by letting them look up information before they write. Imagine a writer who first    │
+│  searches a library for relevant                                                                                                                                             │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────────── 📋 Task Completion ─────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Completed                                                                                                                                                              │
+│  Name: Using the research brief, write a 250-word explainer on retrieval-augmented generation.                                                                               │
+│  Agent: Technical Writer                                                                                                                                                     │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 📋 Task Started ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Started                                                                                                                                                                │
+│  Name: Edit the explainer. Tighten it and mark any claim needing a source.                                                                                                   │
+│  ID: 798ec57a-a40c-4691-970a-f576096b7559                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ──────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Editor                                                                                                                                                               │
+│                                                                                                                                                                              │
+│  Task: Edit the explainer. Tighten it and mark any claim needing a source.                                                                                                   │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────────────────────────────────────────────────── ✅ Agent Final Answer ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Editor                                                                                                                                                               │
+│                                                                                                                                                                              │
+│  Final Answer:                                                                                                                                                               │
+│  **Retrieval‑Augmented Generation (RAG): Key Facts & Open Questions**                                                                                                        │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 5 Key Facts                                                                                                                                                             │
+│                                                                                                                                                                              │
+│  - **Hybrid architecture** – RAG pairs a **retriever** (usually a dense vector search over an external knowledge base) with a **generator** (typically a large language      │
+│  model). The retriever returns relevant documents or passages; the generator conditions its output on that retrieved context.                                                │
+│                                                                                                                                                                              │
+│  - **Improved factual accuracy** – Grounding generation in retrieved evidence reduces hallucinations and boosts scores on factual QA benchmarks such as Natural Questions    │
+│  and TriviaQA (Lewis et al., 2020; Izacard & Grave, 2022).                                                                                                                   │
+│                                                                                                                                                                              │
+│  - **Scalable knowledge updates** – Because the knowledge source is external, facts can be added or edited in the index without re‑training the language model [source       │
+│  needed].                                                                                                                                                                    │
+│                                                                                                                                                                              │
+│  - **Two main retrieval paradigms** –                                                                                                                                        │
+│    1. **Sparse retrieval** (e.g., BM25, Elasticsearch) relies on term‑frequency statistics and excels at exact keyword matches.                                              │
+│    2. **Dense retrieval** (bi‑encoders such as DPR, ColBERT, or newer contrastive models) maps queries and passages into a shared vector space, enabling semantic matching   │
+│  beyond lexical overlap.                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  - **Prompt‑engineering & fusion strategies** – How retrieved texts are fed to the generator matters. Common approaches include:                                             │
+│    - **Concatenation** of the top‑k passages to the prompt.                                                                                                                  │
+│    - **Fusion‑in‑decoder** (e.g., Fusion‑in‑Decoder, FiD), where each passage is encoded separately and merged inside the decoder.                                           │
+│    - **Reranking** or **knowledge‑aware attention** to weight the most relevant snippets during generation.                                                                  │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 2 Open Questions                                                                                                                                                        │
+│                                                                                                                                                                              │
+│  - **Optimising retrieval‑generation interaction at scale** – Dense retrievers can return noisy or overly long passages that exceed the generator’s context window. What     │
+│  principled methods (e.g., adaptive k‑selection, learned passage summarisation, dynamic context windows) can balance relevance, brevity, and computational cost for          │
+│  real‑time, large‑scale deployments?                                                                                                                                         │
+│                                                                                                                                                                              │
+│  - **Evaluating trustworthiness beyond accuracy** – Current metrics focus on factual correctness (exact match, F1). Users also care about **source attribution**, **bias     │
+│  mitigation**, and **explainability**. How should we design evaluation frameworks that capture these dimensions—such as citation fidelity, provenance tracking, or           │
+│  user‑perceived trust—to guide the development of more responsible RAG systems?                                                                                              │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  Retrieval‑augmented generation (RAG) makes AI text generators more reliable by letting them look up information before they write. Imagine a writer who first searches a    │
+│  library for relevant facts, then drafts a paragraph that cites those sources directly.                                                                                      │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────────── 📋 Task Completion ─────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Completed                                                                                                                                                              │
+│  Name: Edit the explainer. Tighten it and mark any claim needing a source.                                                                                                   │
+│  Agent: Editor                                                                                                                                                               │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 📋 Task Started ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Started                                                                                                                                                                │
+│  Name: Review the edited explainer on retrieval-augmented generation. List every factual claim and label each one VERIFIED (widely established), UNCERTAIN (plausible but    │
+│  needs a source), or LIKELY WRONG, with a one-line reason.                                                                                                                   │
+│  ID: a0f97c63-25e7-4f18-8357-ac3f87807ab0                                                                                                                                    │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ──────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Fact Checker                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  Task: Review the edited explainer on retrieval-augmented generation. List every factual claim and label each one VERIFIED (widely established), UNCERTAIN (plausible but    │
+│  needs a source), or LIKELY WRONG, with a one-line reason.                                                                                                                   │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────────────────────────────────────────────────── ✅ Agent Final Answer ────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Agent: Fact Checker                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  Final Answer:                                                                                                                                                               │
+│  **Retrieval‑Augmented Generation (RAG): Key Facts & Open Questions**                                                                                                        │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 5 Key Facts                                                                                                                                                             │
+│                                                                                                                                                                              │
+│  - **Hybrid architecture** – RAG pairs a **retriever** (usually a dense vector search over an external knowledge base) with a **generator** (typically a large language      │
+│  model). The retriever returns relevant documents or passages; the generator conditions its output on that retrieved context.                                                │
+│                                                                                                                                                                              │
+│  - **Improved factual accuracy** – Grounding generation in retrieved evidence reduces hallucinations and boosts scores on factual QA benchmarks such as Natural Questions    │
+│  and TriviaQA (Lewis et al., 2020; Izacard & Grave, 2022).                                                                                                                   │
+│                                                                                                                                                                              │
+│  - **Scalable knowledge updates** – Because the knowledge source is external, facts can be added or edited in the index without re‑training the language model [source       │
+│  needed].                                                                                                                                                                    │
+│                                                                                                                                                                              │
+│  - **Two main retrieval paradigms** –                                                                                                                                        │
+│    1. **Sparse retrieval** (e.g., BM25, Elasticsearch) relies on term‑frequency statistics and excels at exact keyword matches.                                              │
+│    2. **Dense retrieval** (bi‑encoders such as DPR, ColBERT, or newer contrastive models) maps queries and passages into a shared vector space, enabling semantic matching   │
+│  beyond lexical overlap.                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  - **Prompt‑engineering & fusion strategies** – How retrieved texts are fed to the generator matters. Common approaches include:                                             │
+│    - **Concatenation** of the top‑k passages to the prompt.                                                                                                                  │
+│    - **Fusion‑in‑decoder** (e.g., Fusion‑in‑Decoder, FiD), where each passage is encoded separately and merged inside the decoder.                                           │
+│    - **Reranking** or **knowledge‑aware attention** to weight the most relevant snippets during generation.                                                                  │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 2 Open Questions                                                                                                                                                        │
+│                                                                                                                                                                              │
+│  - **Optimising retrieval‑generation interaction at scale** – Dense retrievers can return noisy or overly long passages that exceed the generator’s context window. What     │
+│  principled methods (e.g., adaptive k‑selection, learned passage summarisation, dynamic context windows) can balance relevance, brevity, and computational cost for          │
+│  real‑time, large‑scale deployments?                                                                                                                                         │
+│                                                                                                                                                                              │
+│  - **Evaluating trustworthiness beyond accuracy** – Current metrics focus on factual correctness (exact match, F1). Users also care about **source attribution**, **bias     │
+│  mitigation**, and **explainability**. How should we design evaluation frameworks that capture these dimensions—such as citation fidelity, provenance tracking, or           │
+│  user‑perceived trust—to guide the development of more responsible RAG systems?                                                                                              │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  Retrieval‑augmented generation (RAG) makes AI text generators more reliable by letting them look up information before they write. Imagine a writer who first searches a    │
+│  library for relevant facts, then drafts a paragraph that cites those sources directly.                                                                                      │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ## Fact‑Check Table                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  | Claim | Label | Reason |                                                                                                                                                  │
+│  |-------|-------|--------|                                                                                                                                                  │
+│  | RAG pairs a retriever (usually a dense vector search over an external knowledge base) with a generator (typically a large language model). | VERIFIED | Core definition   │
+│  of RAG; widely described in the literature. |                                                                                                                               │
+│  | The retriever returns relevant documents or passages; the generator conditions its output on that retrieved context. | VERIFIED | Fundamental operation of                │
+│  retrieval‑augmented generation. |                                                                                                                                           │
+│  | Grounding generation in retrieved evidence reduces hallucinations. | VERIFIED | Empirical studies (e.g., Lewis et al., 2020) report lower hallucination rates when using  │
+│  retrieved context. |                                                                                                                                                        │
+│  | Grounding generation boosts scores on factual QA benchmarks such as Natural Questions and TriviaQA (Lewis et al., 2020; Izacard & Grave, 2022). | VERIFIED | Those        │
+│  papers demonstrate measurable improvements on the cited benchmarks. |                                                                                                       │
+│  | Because the knowledge source is external, facts can be added or edited in the index without re‑training the language model. | VERIFIED | External indexing enables        │
+│  post‑hoc updates; a standard advantage of RAG. |                                                                                                                            │
+│  | Sparse retrieval (e.g., BM25, Elasticsearch) relies on term‑frequency statistics and excels at exact keyword matches. | VERIFIED | Accurate description of classic        │
+│  sparse IR methods. |                                                                                                                                                        │
+│  | Dense retrieval (bi‑encoders such as DPR, ColBERT, or newer contrastive models) maps queries and passages into a shared vector space, enabling semantic matching beyond   │
+│  lexical overlap. | VERIFIED | Consistent with the design of DPR, ColBERT, and similar models. |                                                                             │
+│  | Concatenation of the top‑k passages to the prompt is a common approach. | VERIFIED | Widely used baseline in RAG implementations. |                                       │
+│  | Fusion‑in‑decoder (e.g., Fusion‑in‑Decoder, FiD), where each passage is encoded separately and merged inside the decoder, is a common approach. | VERIFIED | FiD is a     │
+│  well‑cited method for multi‑passage fusion. |                                                                                                                               │
+│  | Reranking or knowledge‑aware attention to weight the most relevant snippets during generation is a common approach. | VERIFIED | Several papers (e.g., Karpukhin et al.,  │
+│  2020) employ reranking/attention mechanisms. |                                                                                                                              │
+│  | Dense retrievers can return noisy or overly long passages that exceed the generator’s context window. | VERIFIED | Document length overflow is a recognized practical     │
+│  limitation. |                                                                                                                                                               │
+│  | Adaptive k‑selection, learned passage summarisation, and dynamic context windows are proposed methods to balance relevance, brevity, and computational cost. | VERIFIED   │
+│  | Recent research explores exactly these techniques. |                                                                                                                      │
+│  | Current metrics focus on factual correctness (exact match, F1). | VERIFIED | Standard evaluation for QA benchmarks. |                                                     │
+│  | Users also care about source attribution, bias mitigation, and explainability. | UNCERTAIN | Plausible user concerns, but not a universally quantified fact. |            │
+│  | Evaluation frameworks can capture dimensions such as citation fidelity, provenance tracking, or user‑perceived trust. | UNCERTAIN | Proposed frameworks exist             │
+│  conceptually, but no widely adopted standard yet. |                                                                                                                         │
+│  | Retrieval‑augmented generation makes AI text generators more reliable by letting them look up information before they write. | UNCERTAIN | Generally true in practice,    │
+│  yet “more reliable” is a qualitative claim lacking a single definitive measurement. |                                                                                       │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭───────────────────────────────────────────────────────────────────────────── 📋 Task Completion ─────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Task Completed                                                                                                                                                              │
+│  Name: Review the edited explainer on retrieval-augmented generation. List every factual claim and label each one VERIFIED (widely established), UNCERTAIN (plausible but    │
+│  needs a source), or LIKELY WRONG, with a one-line reason.                                                                                                                   │
+│  Agent: Fact Checker                                                                                                                                                         │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────────────────────────────────────────────────────── Crew Completion ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Crew Execution Completed                                                                                                                                                    │
+│  Name: crew                                                                                                                                                                  │
+│  ID: 2ff5a943-9871-4ef1-bc5c-276bc5c21848                                                                                                                                    │
+│  Final Output: **Retrieval‑Augmented Generation (RAG): Key Facts & Open Questions**                                                                                          │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 5 Key Facts                                                                                                                                                             │
+│                                                                                                                                                                              │
+│  - **Hybrid architecture** – RAG pairs a **retriever** (usually a dense vector search over an external knowledge base) with a **generator** (typically a large language      │
+│  model). The retriever returns relevant documents or passages; the generator conditions its output on that retrieved context.                                                │
+│                                                                                                                                                                              │
+│  - **Improved factual accuracy** – Grounding generation in retrieved evidence reduces hallucinations and boosts scores on factual QA benchmarks such as Natural Questions    │
+│  and TriviaQA (Lewis et al., 2020; Izacard & Grave, 2022).                                                                                                                   │
+│                                                                                                                                                                              │
+│  - **Scalable knowledge updates** – Because the knowledge source is external, facts can be added or edited in the index without re‑training the language model [source       │
+│  needed].                                                                                                                                                                    │
+│                                                                                                                                                                              │
+│  - **Two main retrieval paradigms** –                                                                                                                                        │
+│    1. **Sparse retrieval** (e.g., BM25, Elasticsearch) relies on term‑frequency statistics and excels at exact keyword matches.                                              │
+│    2. **Dense retrieval** (bi‑encoders such as DPR, ColBERT, or newer contrastive models) maps queries and passages into a shared vector space, enabling semantic matching   │
+│  beyond lexical overlap.                                                                                                                                                     │
+│                                                                                                                                                                              │
+│  - **Prompt‑engineering & fusion strategies** – How retrieved texts are fed to the generator matters. Common approaches include:                                             │
+│    - **Concatenation** of the top‑k passages to the prompt.                                                                                                                  │
+│    - **Fusion‑in‑decoder** (e.g., Fusion‑in‑Decoder, FiD), where each passage is encoded separately and merged inside the decoder.                                           │
+│    - **Reranking** or **knowledge‑aware attention** to weight the most relevant snippets during generation.                                                                  │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ### 2 Open Questions                                                                                                                                                        │
+│                                                                                                                                                                              │
+│  - **Optimising retrieval‑generation interaction at scale** – Dense retrievers can return noisy or overly long passages that exceed the generator’s context window. What     │
+│  principled methods (e.g., adaptive k‑selection, learned passage summarisation, dynamic context windows) can balance relevance, brevity, and computational cost for          │
+│  real‑time, large‑scale deployments?                                                                                                                                         │
+│                                                                                                                                                                              │
+│  - **Evaluating trustworthiness beyond accuracy** – Current metrics focus on factual correctness (exact match, F1). Users also care about **source attribution**, **bias     │
+│  mitigation**, and **explainability**. How should we design evaluation frameworks that capture these dimensions—such as citation fidelity, provenance tracking, or           │
+│  user‑perceived trust—to guide the development of more responsible RAG systems?                                                                                              │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  Retrieval‑augmented generation (RAG) makes AI text generators more reliable by letting them look up information before they write. Imagine a writer who first searches a    │
+│  library for relevant facts, then drafts a paragraph that cites those sources directly.                                                                                      │
+│                                                                                                                                                                              │
+│  ---                                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  ## Fact‑Check Table                                                                                                                                                         │
+│                                                                                                                                                                              │
+│  | Claim | Label | Reason |                                                                                                                                                  │
+│  |-------|-------|--------|                                                                                                                                                  │
+│  | RAG pairs a retriever (usually a dense vector search over an external knowledge base) with a generator (typically a large language model). | VERIFIED | Core definition   │
+│  of RAG; widely described in the literature. |                                                                                                                               │
+│  | The retriever returns relevant documents or passages; the generator conditions its output on that retrieved context. | VERIFIED | Fundamental operation of                │
+│  retrieval‑augmented generation. |                                                                                                                                           │
+│  | Grounding generation in retrieved evidence reduces hallucinations. | VERIFIED | Empirical studies (e.g., Lewis et al., 2020) report lower hallucination rates when using  │
+│  retrieved context. |                                                                                                                                                        │
+│  | Grounding generation boosts scores on factual QA benchmarks such as Natural Questions and TriviaQA (Lewis et al., 2020; Izacard & Grave, 2022). | VERIFIED | Those        │
+│  papers demonstrate measurable improvements on the cited benchmarks. |                                                                                                       │
+│  | Because the knowledge source is external, facts can be added or edited in the index without re‑training the language model. | VERIFIED | External indexing enables        │
+│  post‑hoc updates; a standard advantage of RAG. |                                                                                                                            │
+│  | Sparse retrieval (e.g., BM25, Elasticsearch) relies on term‑frequency statistics and excels at exact keyword matches. | VERIFIED | Accurate description of classic        │
+│  sparse IR methods. |                                                                                                                                                        │
+│  | Dense retrieval (bi‑encoders such as DPR, ColBERT, or newer contrastive models) maps queries and passages into a shared vector space, enabling semantic matching beyond   │
+│  lexical overlap. | VERIFIED | Consistent with the design of DPR, ColBERT, and similar models. |                                                                             │
+│  | Concatenation of the top‑k passages to the prompt is a common approach. | VERIFIED | Widely used baseline in RAG implementations. |                                       │
+│  | Fusion‑in‑decoder (e.g., Fusion‑in‑Decoder, FiD), where each passage is encoded separately and merged inside the decoder, is a common approach. | VERIFIED | FiD is a     │
+│  well‑cited method for multi‑passage fusion. |                                                                                                                               │
+│  | Reranking or knowledge‑aware attention to weight the most relevant snippets during generation is a common approach. | VERIFIED | Several papers (e.g., Karpukhin et al.,  │
+│  2020) employ reranking/attention mechanisms. |                                                                                                                              │
+│  | Dense retrievers can return noisy or overly long passages that exceed the generator’s context window. | VERIFIED | Document length overflow is a recognized practical     │
+│  limitation. |                                                                                                                                                               │
+│  | Adaptive k‑selection, learned passage summarisation, and dynamic context windows are proposed methods to balance relevance, brevity, and computational cost. | VERIFIED   │
+│  | Recent research explores exactly these techniques. |                                                                                                                      │
+│  | Current metrics focus on factual correctness (exact match, F1). | VERIFIED | Standard evaluation for QA benchmarks. |                                                     │
+│  | Users also care about source attribution, bias mitigation, and explainability. | UNCERTAIN | Plausible user concerns, but not a universally quantified fact. |            │
+│  | Evaluation frameworks can capture dimensions such as citation fidelity, provenance tracking, or user‑perceived trust. | UNCERTAIN | Proposed frameworks exist             │
+│  conceptually, but no widely adopted standard yet. |                                                                                                                         │
+│  | Retrieval‑augmented generation makes AI text generators more reliable by letting them look up information before they write. | UNCERTAIN | Generally true in practice,    │
+│  yet “more reliable” is a qualitative claim lacking a single definitive measurement. |                                                                                       │
+│                                                                                                                                                                              │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+=== FINAL OUTPUT (also saved to output/explainer.md) ===
+
+**Retrieval‑Augmented Generation (RAG): Key Facts & Open Questions**
+
+---
+
+### 5 Key Facts  
+
+- **Hybrid architecture** – RAG pairs a **retriever** (usually a dense vector search over an external knowledge base) with a **generator** (typically a large language model). The retriever returns relevant documents or passages; the generator conditions its output on that retrieved context.  
+
+- **Improved factual accuracy** – Grounding generation in retrieved evidence reduces hallucinations and boosts scores on factual QA benchmarks such as Natural Questions and TriviaQA (Lewis et al., 2020; Izacard & Grave, 2022).  
+
+- **Scalable knowledge updates** – Because the knowledge source is external, facts can be added or edited in the index without re‑training the language model [source needed].  
+
+- **Two main retrieval paradigms** –  
+  1. **Sparse retrieval** (e.g., BM25, Elasticsearch) relies on term‑frequency statistics and excels at exact keyword matches.  
+  2. **Dense retrieval** (bi‑encoders such as DPR, ColBERT, or newer contrastive models) maps queries and passages into a shared vector space, enabling semantic matching beyond lexical overlap.  
+
+- **Prompt‑engineering & fusion strategies** – How retrieved texts are fed to the generator matters. Common approaches include:  
+  - **Concatenation** of the top‑k passages to the prompt.  
+  - **Fusion‑in‑decoder** (e.g., Fusion‑in‑Decoder, FiD), where each passage is encoded separately and merged inside the decoder.  
+  - **Reranking** or **knowledge‑aware attention** to weight the most relevant snippets during generation.  
+
+---
+
+### 2 Open Questions  
+
+- **Optimising retrieval‑generation interaction at scale** – Dense retrievers can return noisy or overly long passages that exceed the generator’s context window. What principled methods (e.g., adaptive k‑selection, learned passage summarisation, dynamic context windows) can balance relevance, brevity, and computational cost for real‑time, large‑scale deployments?  
+
+- **Evaluating trustworthiness beyond accuracy** – Current metrics focus on factual correctness (exact match, F1). Users also care about **source attribution**, **bias mitigation**, and **explainability**. How should we design evaluation frameworks that capture these dimensions—such as citation fidelity, provenance tracking, or user‑perceived trust—to guide the development of more responsible RAG systems?  
+
+---
+
+Retrieval‑augmented generation (RAG) makes AI text generators more reliable by letting them look up information before they write. Imagine a writer who first searches a library for relevant facts, then drafts a paragraph that cites those sources directly.
+
+---
+
+## Fact‑Check Table
+
+| Claim | Label | Reason |
+|-------|-------|--------|
+| RAG pairs a retriever (usually a dense vector search over an external knowledge base) with a generator (typically a large language model). | VERIFIED | Core definition of RAG; widely described in the literature. |
+| The retriever returns relevant documents or passages; the generator conditions its output on that retrieved context. | VERIFIED | Fundamental operation of retrieval‑augmented generation. |
+| Grounding generation in retrieved evidence reduces hallucinations. | VERIFIED | Empirical studies (e.g., Lewis et al., 2020) report lower hallucination rates when using retrieved context. |
+| Grounding generation boosts scores on factual QA benchmarks such as Natural Questions and TriviaQA (Lewis et al., 2020; Izacard & Grave, 2022). | VERIFIED | Those papers demonstrate measurable improvements on the cited benchmarks. |
+| Because the knowledge source is external, facts can be added or edited in the index without re‑training the language model. | VERIFIED | External indexing enables post‑hoc updates; a standard advantage of RAG. |
+| Sparse retrieval (e.g., BM25, Elasticsearch) relies on term‑frequency statistics and excels at exact keyword matches. | VERIFIED | Accurate description of classic sparse IR methods. |
+| Dense retrieval (bi‑encoders such as DPR, ColBERT, or newer contrastive models) maps queries and passages into a shared vector space, enabling semantic matching beyond lexical overlap. | VERIFIED | Consistent with the design of DPR, ColBERT, and similar models. |
+| Concatenation of the top‑k passages to the prompt is a common approach. | VERIFIED | Widely used baseline in RAG implementations. |
+| Fusion‑in‑decoder (e.g., Fusion‑in‑Decoder, FiD), where each passage is encoded separately and merged inside the decoder, is a common approach. | VERIFIED | FiD is a well‑cited method for multi‑passage fusion. |
+| Reranking or knowledge‑aware attention to weight the most relevant snippets during generation is a common approach. | VERIFIED | Several papers (e.g., Karpukhin et al., 2020) employ reranking/attention mechanisms. |
+| Dense retrievers can return noisy or overly long passages that exceed the generator’s context window. | VERIFIED | Document length overflow is a recognized practical limitation. |
+| Adaptive k‑selection, learned passage summarisation, and dynamic context windows are proposed methods to balance relevance, brevity, and computational cost. | VERIFIED | Recent research explores exactly these techniques. |
+| Current metrics focus on factual correctness (exact match, F1). | VERIFIED | Standard evaluation for QA benchmarks. |
+| Users also care about source attribution, bias mitigation, and explainability. | UNCERTAIN | Plausible user concerns, but not a universally quantified fact. |
+| Evaluation frameworks can capture dimensions such as citation fidelity, provenance tracking, or user‑perceived trust. | UNCERTAIN | Proposed frameworks exist conceptually, but no widely adopted standard yet. |
+| Retrieval‑augmented generation makes AI text generators more reliable by letting them look up information before they write. | UNCERTAIN | Generally true in practice, yet “more reliable” is a qualitative claim lacking a single definitive measurement. |
+╭─────────────────────────────────────────────────────────────────────────────── Tracing Status ───────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                              │
+│  Info: Tracing is disabled.                                                                                                                                                  │
+│                                                                                                                                                                              │
+│  To enable tracing, do any one of these:                                                                                                                                     │
+│  • Set tracing=True in your Crew/Flow code                                                                                                                                   │
+│  • Set CREWAI_TRACING_ENABLED=true in your project's .env file                                                                                                               │
+│  • Run: crewai traces enable                                                                                                                                                 │
+│                                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+PS C:\Users\shrey\OneDrive\Documents\agentic-starter-kits\agentic-starter-kits\crewai-kit> 
