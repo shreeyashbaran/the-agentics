@@ -1,6 +1,6 @@
 # CrewAI Build Report
 
-**Name:** Shreeyash Baranwal
+**Name:** Shreeyash Baranwal<br>
 **Topic I used:** retrieval-augmented generation
 
 ## 1. What I changed
